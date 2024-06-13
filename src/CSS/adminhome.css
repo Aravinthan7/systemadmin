@@ -1,0 +1,20 @@
+.top-parent{
+
+    padding-top: 10%;
+} 
+.centered-container {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%; /* Adjust as needed */
+    height: 50%; /* Adjust as needed */
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+  }
+  
+  .content {
+    /* Styles for your content */
+  }
+  
