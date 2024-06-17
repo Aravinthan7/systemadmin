@@ -4,10 +4,14 @@ import PropTypes from 'prop-types';
 
 const Megamenubar=forwardRef((props,ref)=>{
     let {custom:locustom}=props
+
+    //ref declared
+    const refCurrentElement=useRef([]);
+    //----
     return(
         <React.Fragment>
              <div className="card">
-            <MegaMenu model={items} orientation="horizontal" start={start} end={end} breakpoint="960px" className="p-3 surface-0 shadow-2" style={{ borderRadius: '3rem' }} />
+            <MegaMenu ref={refCurrentElement} model={locustom.items} orientation={locustom.orientation} start={locustom.start} end={locustom.end} breakpoint="960px" className="p-3 surface-0 shadow-2" style={{ borderRadius: '3rem' }} />
         </div>
         </React.Fragment>
     )
