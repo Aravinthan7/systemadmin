@@ -16,6 +16,7 @@ Megamenubar.propTypes = {
     items: PropTypes.array.isRequired,
     start: PropTypes.string.isRequired,
     end: PropTypes.string.isRequired,
+    orientation:PropTypes.string.isRequired
 };
 
 export default React.memo(Megamenubar);
