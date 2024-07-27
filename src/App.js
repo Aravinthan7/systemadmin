@@ -10,9 +10,12 @@ import '/node_modules/primeflex/primeflex.css';
 import 'primereact/resources/themes/lara-light-teal/theme.css';
 import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css'
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from './Error/ErrorFallback ';
 function App() {
   return (
     <BrowserRouter>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
     <Routes>
      
         <Route index element={<Login />} />
@@ -21,6 +24,7 @@ function App() {
         {/* <Route path="*" element={<NoPage />} /> */}
     
     </Routes>
+    </ErrorBoundary>
   </BrowserRouter>
   );
 }

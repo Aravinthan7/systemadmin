@@ -4,13 +4,15 @@ import { Column } from 'primereact/column';
 import PropTypes from 'prop-types';
 const DataTable = forwardRef((props, ref) => {
 
-    //ref declared
+    //ref's declared
     const refCurrentElement = useRef([]);
     //----
-    //useImprative handle
-    useImperativeHandle(ref, () => refCurrentElement.current);
-    //---
 
+    //useImperative handle
+    useImperativeHandle(ref, () => refCurrentElement.current);
+    //------
+
+    
     return (
         <React.Fragment>
             <DataTable>
@@ -21,7 +23,8 @@ const DataTable = forwardRef((props, ref) => {
 });
 DataTable.propTypes={
     value:PropTypes.array,
-    selectionMode:PropType.string,
+    selectionMode:PropTypes.string,
+
 
 }
 export default memo(DataTable);
