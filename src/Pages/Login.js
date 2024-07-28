@@ -1,13 +1,19 @@
 import React from 'react';
 // import background from '../Image/sign-up-rate.jpg';
 import background from '../Image/login-1.png';
+import useAxios from '../CustomHooks/useApilogger';
 export default function Login() {
+
+
   const lostyle={
     backgroundImage: `url(${background})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     height: "100vh",
   }
+
+
+
   return (
     <React.Fragment>
       <div className='loginbackg' style={lostyle}>
@@ -15,9 +21,9 @@ export default function Login() {
           <div class="login">
             <h1>Loginto Web App </h1>
             <form method="post" action="">
-              <label>Employee ID</label>
+              <label>Employee ID *</label>
               <p><input type="text" name="employeeid" required value="" placeholder="Employee ID" /></p>
-              <label>Password</label>
+              <label>Password *</label>
               <p><input type="password" name="password" required value="" placeholder="Password" /></p>
               <p class="remember_me">
                 <label>

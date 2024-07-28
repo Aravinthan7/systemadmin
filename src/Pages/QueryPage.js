@@ -1,4 +1,4 @@
-import React,{memo,forwardRef,useImperativeHandle} from "react";
+import React,{memo,forwardRef} from "react";
 import MyDataTable from "../Components/Controls/MyDataTable";
 const Querypage=forwardRef((prop,ref)=>{
 
@@ -16,7 +16,7 @@ const Querypage=forwardRef((prop,ref)=>{
         rating: 5
     }]
     let lacolumns=[{'field':'name','header':'Name'}]
-    
+
     return(
         <React.Fragment>
             <div className="card">
