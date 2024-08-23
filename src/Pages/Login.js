@@ -15,8 +15,13 @@ export default function Login() {
   const refCurrentElement=useRef({})
   //-------
 
-  const fnlSubmit=()=>{
-     
+  const fnlSubmit=async()=>{
+
+  let lsuserid=refCurrentElement.current['empid'].value;
+  let lspassowrd=refCurrentElement.current['password'].value;
+  let loobj={"userid":lsuserid,"password":lspassowrd};
+  let lores= useAxios('/login','post',loobj);
+  console.log(lores);    
   }
 
   return (
@@ -27,9 +32,9 @@ export default function Login() {
             <h1>Loginto Web App </h1>
             <form method="post" action="">
               <label>Employee ID *</label>
-              <p><input type="text" ref={el=>refCurrentElement['empid']=el} name="employeeid" required value="" placeholder="Employee ID" /></p>
+              <p><input type="text" ref={el=>refCurrentElement.current['empid']=el} name="employeeid"  required placeholder="Employee ID" /></p>
               <label>Password *</label>
-              <p><input type="password" ref={el=>refCurrentElement['password']=el} name="password" required value="" placeholder="Password" /></p>
+              <p><input type="password" ref={el=>refCurrentElement.current['password']=el} name="password" required  placeholder="Password" /></p>
               <p class="remember_me">
                 <label>
                   <input type="checkbox" name="remember_me" id="remember_me" />

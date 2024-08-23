@@ -1,40 +1,29 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const useAxios = ({ url, method, body = null, headers = null, bodyheaders }) => {
+const useAxios = ({ url, method, body = null, headers = null }) => {
+  axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+  const [res, setRes] = useState("");
+  const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [response, setResponse] = useState(null)
 
-  const api = axios.create({
-    baseURL: process.env.REACT_APP_API_BASE_URL
-  })
 
-  const fetchData = async () => {
-
-    try {
-      const res = await api.request({
-        url,
-        method,
-        headers,
-        data: body
-      });
-      setResponse(res.data);
-    }
-    catch (err) {
-      setError(err)
-    }
-    finally {
-      setLoading(false)
-    }
-
-    
+  const fetchData =async ()=>{
+     axios[method](url,JSON.parse(headers),JSON.parse(body)).then((res)=>{
+      setRes(res.data);
+     })
+     .catch((err)=>{
+      setErr(err)
+     })
+     .finally(()=>{
+      setLoading(false);
+     })
   }
-
-  useEffect(() => {
+  useEffect(()=>{
     fetchData()
-  }, [url, method, bodyheaders])
-  return { response, error, loading }
+  },[method,url,body,headers])
+
+  return {res,err,loading}
 };
 
 export default useAxios;

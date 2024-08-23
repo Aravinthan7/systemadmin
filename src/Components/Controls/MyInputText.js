@@ -1,5 +1,6 @@
 import React, { useImperativeHandle, forwardRef, memo } from "react";
 import { InputText } from "primereact/inputtext";
+import PropTypes from 'prop-types';
 const MyInputText = forwardRef((props, ref) => {
 
     const refCurrentElement = useRef();
@@ -14,7 +15,7 @@ const MyInputText = forwardRef((props, ref) => {
 
     //props destructing handling
     let { custom: locustom } = props;
-    let { value: lsvalue, placeholder: lsplaceholder, classname: lsclassname, id: lsid, disabled: lbdisabled, invalid: lbinvalid,discribed:lsdiscribed,discription:lsdiscription } = locustom;
+    let { value: lsvalue, placeholder: lsplaceholder, classname: lsclassname, id: lsid, disabled: lbdisabled, invalid: lbinvalid,discribed:lsdiscribed,description:lsdescription } = locustom;
     //---
 
 
@@ -26,9 +27,9 @@ const MyInputText = forwardRef((props, ref) => {
 
                 <InputText id={lsid} ref={refCurrentElement} value={lsvalue} placeholder={lsplaceholder} type='text' className={lsclassname} disabled={lbdisabled} invalid={lbinvalid} aria-describedby={lsdiscribed} />
                 {
-                    typeof lsdiscribed==='string'&& lsdiscribed!=='' && typeof lsdiscription ==='string' && lsdiscription !==''?
+                    typeof lsdiscribed==='string'&& lsdiscribed!=='' && typeof lsdescription ==='string' && lsdescription !==''?
                      <small id={lsdiscribed}>
-                    {lsdiscription}
+                    {lsdescription}
                     </small>:null
                 }
             </div>
@@ -39,5 +40,31 @@ const MyInputText = forwardRef((props, ref) => {
 
 
 });
+MyInputText.propTypes={
+    custom:PropTypes.shape({
+        value:PropTypes.string,
+        caption:PropTypes.string,
+        description:PropTypes.string,
+        invalid:PropTypes.bool,
+        placeholder:PropTypes.string,
+        className:PropTypes.string,
+        id:PropTypes.string,
+        discribed:PropTypes.string,
+        disabled:PropTypes.bool
+    }).isRequired
+}
+MyInputText.defaultProps={
+    custom:{
+        value:'',
+        caption:'',
+        description:'',
+        invalid:false,
+        placeholder:'',
+        className:'',
+        id:'',
+        discribed:'',
+        disabled:true,
+    }
+}
 
 export default memo(MyInputText);
